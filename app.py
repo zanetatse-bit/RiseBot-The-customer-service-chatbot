@@ -164,9 +164,9 @@ if user_input:
         st.markdown(user_input)
 
     try:
-    api_key = st.secrets["OPENAI_API_KEY"]
-    except Exception:
-    api_key = os.getenv("OPENAI_API_KEY")
+        api_key = st.secrets["OPENAI_API_KEY"]
+        except Exception:
+        api_key = os.getenv("OPENAI_API_KEY")
 
     try:
         model_name = st.secrets["OPENAI_MODEL"]
