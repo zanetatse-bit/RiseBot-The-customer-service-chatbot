@@ -163,7 +163,15 @@ if user_input:
     with st.chat_message("user"):
         st.markdown(user_input)
 
+    try:
+    api_key = st.secrets["OPENAI_API_KEY"]
+    except Exception:
     api_key = os.getenv("OPENAI_API_KEY")
+
+    try:
+        model_name = st.secrets["OPENAI_MODEL"]
+    except Exception:
+        model=model_name
     if not api_key:
         answer = (
             "RiseBot is not connected to its AI service yet. The site owner needs to set the "
