@@ -165,7 +165,7 @@ if user_input:
 
     try:
         api_key = st.secrets["OPENAI_API_KEY"]
-        except Exception:
+    except Exception:
         api_key = os.getenv("OPENAI_API_KEY")
 
     try:
