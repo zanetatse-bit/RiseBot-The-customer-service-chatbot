@@ -192,12 +192,21 @@ if user_input:
                         "Sorry, I couldn’t prepare an answer just now. Please try again."
                     )
                     st.markdown(answer)
-        except Exception:
+        
+        except Exception as exc:
+            import logging
+            logging.exception("RiseBot API request failed")
+        
+            st.error(
+                "RiseBot connection failed. "
+                "Check the app logs for the underlying error."
+            )
             answer = (
                 "Sorry — RiseBot couldn’t connect to the support service just now. "
                 "Please try again shortly, or contact support@risepro.co.nz."
             )
             with st.chat_message("assistant", avatar="☀️"):
                 st.markdown(answer)
+
 
     st.session_state.messages.append({"role": "assistant", "content": answer})
